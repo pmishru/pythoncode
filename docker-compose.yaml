@@ -1,0 +1,13 @@
+services:
+  mysqldb28:
+    image: 'mysql:latest'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=userinfo
+    container_name: "mysqldb28"
+
+  mypythonapp:
+    build: ./
+    container_name: mypyapp
+    depends_on:
+      - 'mysqldb'
